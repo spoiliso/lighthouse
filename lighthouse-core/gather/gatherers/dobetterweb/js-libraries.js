@@ -57,7 +57,7 @@ class JSLibraries extends Gatherer {
       return (${detectLibraries.toString()}());
     })()`;
 
-    return options.driver.evaluateAsync(expression);
+    return options.driver.evaluateAsync(expression, {useIsolation: false});
   }
 }
 

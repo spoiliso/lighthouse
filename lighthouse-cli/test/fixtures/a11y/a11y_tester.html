@@ -120,7 +120,7 @@
     <section>
       <form>
         <input
-          id="label" 
+          id="label"
           type="text">
       </form>
     </section>
@@ -197,5 +197,13 @@
     <section>
       <video id="video-description"></video>
     </section>
+    <script>
+      // axe fails if `define` is present but misbehaves, create a bogus implementation to exercise our
+      // execution context isolation workaround, see https://github.com/GoogleChrome/lighthouse/issues/2505
+      window.define = function () {
+        throw new Error('No AMD modules allowed');
+      };
+      window.define.amd = true;
+    </script>
   </body>
 </html>
